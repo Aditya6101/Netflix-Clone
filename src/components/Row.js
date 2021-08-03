@@ -12,14 +12,13 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     const fetchMovies = async () => {
       const res = await axios.get(fetchUrl);
       setMovies(res.data.results);
-      console.log(res);
     };
     fetchMovies();
   }, [fetchUrl]);
-  console.log(movies);
+  //   console.log(movies);
 
   return (
-    <div>
+    <main>
       <h3> {title} </h3>
       <div className="row__posters">
         {movies.map((movie) => (
@@ -33,7 +32,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 
