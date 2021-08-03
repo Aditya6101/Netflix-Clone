@@ -15,7 +15,6 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     };
     fetchMovies();
   }, [fetchUrl]);
-  //   console.log(movies);
 
   return (
     <main>

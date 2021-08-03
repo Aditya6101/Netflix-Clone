@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Row from "./components/Row";
 import requests from "./requests";
@@ -8,6 +9,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      <Header />
       <Hero />
       <Row
         title="Netfilx Originals"
