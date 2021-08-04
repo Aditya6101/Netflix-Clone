@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "../axios";
 
 import "./Row.css";
@@ -17,21 +18,22 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   }, [fetchUrl]);
 
   return (
-    <main>
+    <div>
       <h3> {title} </h3>
       <div className="row__posters">
         {movies.map((movie) => (
-          <img
-            key={movie.id}
-            className={`row__poster ${isLargeRow && "row__poster-large"}`}
-            src={`${basePosterUrl}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
-          />
+          <Link to="/movie/:id" key={movie.id}>
+            <img
+              className={`row__poster ${isLargeRow && "row__poster-large"}`}
+              src={`${basePosterUrl}${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
+              alt={movie.name}
+            />
+          </Link>
         ))}
       </div>
-    </main>
+    </div>
   );
 };
 
