@@ -18,11 +18,11 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   }, [fetchUrl]);
 
   return (
-    <div>
+    <div className="row">
       <h3> {title} </h3>
       <div className="row__posters">
         {movies.map((movie) => (
-          <Link to="/movie/:id" key={movie.id}>
+          <Link key={movie.id} to={`/movie/${movie.id}`}>
             <img
               className={`row__poster ${isLargeRow && "row__poster-large"}`}
               src={`${basePosterUrl}${

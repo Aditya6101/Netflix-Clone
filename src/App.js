@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Row from "./components/Row";
+import Movie from "./components/Movie";
 import requests from "./requests";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -13,6 +14,7 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
+          <Route path="/movie/:id" component={Movie}></Route>
           <Route path="/">
             <Hero />
             <Row
