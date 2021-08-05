@@ -26,7 +26,7 @@ const Hero = () => {
     <section
       className="hero"
       style={{
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundImage: `url("${requests.fetchPosterImg}${movie?.backdrop_path}")`,
       }}
     >
       <div className="hero__content">

@@ -1,0 +1,53 @@
+
+          {(videoLoading && (
+            <h1 style={{ color: "#fff" }}>
+              Getting Video <img src={Rocket} alt="" />
+            </h1>
+          )) ||
+            (!videoLoading &&
+              ((videoUrl !== "" && (
+                // <YouTube className="trailer" videoId={trailerUrl} opts={opts} />
+                // <video width="320" height="240" autoPlay controls>
+                //   <source
+                //     src=" https://www.youtube.com/watch?v=5eblKqTZ-0Q"
+                //     type="video/mp4"
+                //   />
+                //   Your browser does not support the video tag.
+                // </video>
+                <iframe
+                  title="movie-trailer"
+                  className="trailer"
+                  width="100%"
+                  height="500"
+                  frameborder="0"
+                  allowFullScreen
+                  src={videoUrl}
+                ></iframe>
+              )) ||
+                (videoUrl === "" && (
+                  <div className="trailer-msg">Sorry!! Video Not Available</div>
+                ))))}
+
+
+
+        {videoLoading ? (
+            <h1 style={{ color: "#fff" }}>
+              Getting Video <img src={Rocket} alt="" />
+            </h1>
+          ) : (
+            !videoLoading &&
+            ((videoUrl !== "Video Not Available" && (
+              <iframe
+                title="movie-trailer"
+                className="trailer"
+                width="100%"
+                height="500"
+                frameborder="0"
+                allowFullScreen
+                src={videoUrl}
+              ></iframe>
+            )) ||
+              (videoUrl === "Video Not Available" && (
+                <div className="trailer-msg">Sorry!! Video Not Available</div>
+              )))
+          )}
