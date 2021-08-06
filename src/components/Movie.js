@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
-// import YouTube from "react-youtube";
-// import movieTrailer from "movie-trailer";
 import requests from "../requests";
 
 import "./Movie.css";
@@ -11,15 +9,6 @@ const Movie = ({ match }) => {
   const [loading, setLoading] = useState(true);
   const [videoLoading, setVideoLoading] = useState(true);
   const [videoUrl, setVideoUrl] = useState("");
-
-  // const opts = {
-  //   height: "400",
-  //   width: "100%",
-  //   playerVars: {
-  //     // https://developers.google.com/youtube/player_parameters
-  //   autoplay: 0,
-  //   },
-  // };
 
   useEffect(() => {
     const getTrailer = async (movie) => {
