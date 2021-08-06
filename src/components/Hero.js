@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "../axios";
 import requests from "../requests";
 
@@ -32,7 +33,9 @@ const Hero = () => {
       <div className="hero__content">
         <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
         <div className="hero__ctas">
-          <button className="hero__cta">Play</button>
+          <Link to={`/movie/${movie.id}`}>
+            <button className="hero__cta">Play</button>
+          </Link>
           <button className="hero__cta">My List</button>
         </div>
         <p className="hero__desc">{truncate(movie?.overview, 150)}</p>
