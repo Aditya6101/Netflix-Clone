@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "../axios";
 import requests from "../requests";
 
@@ -7,6 +8,7 @@ import "./Movie.css";
 const Movie = ({ match }) => {
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(true);
   const [videoLoading, setVideoLoading] = useState(true);
   const [videoUrl, setVideoUrl] = useState("");
 
@@ -42,20 +44,32 @@ const Movie = ({ match }) => {
     const fetchMovie = async () => {
       setLoading(true);
       const fetchUrl = `/movie/${match.params.id}?api_key=d7a863e84fa978c1d06301cb7534b7b6&language=en-US`;
-      const res = await axios.get(fetchUrl);
-      setMovie(res.data);
-      setLoading(false);
+      try {
+        const res = await axios.get(fetchUrl);
+        setMovie(res.data);
+        setLoading(false);
+        setError(false);
+      } catch (error) {
+        setLoading(false);
+        setError(true);
+      }
     };
     fetchMovie();
   }, [match.params.id]);
-
-  console.log(videoUrl);
 
   if (loading) {
     return <div className="loader">Loading...</div>;
   }
 
-  if (!loading) {
+  if (error) {
+    return (
+      <div className="loader">
+        Oops! Something went wrong... <Link to="/">Back to Home</Link>{" "}
+      </div>
+    );
+  }
+
+  if (!loading && !error) {
     return (
       <main
         className="movie"
